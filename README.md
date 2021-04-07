@@ -1,24 +1,37 @@
-# README
+# Backend Testing Workshop
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+- Ruby 2.6.1
 
-* Ruby version
+## Installation
 
-* System dependencies
+```shell
+bundle install
+yarn install
+bin/rails db:setup
+```
 
-* Configuration
+Run the project with `bin/rails s` and ensure you can access it at `http://localhost:3000`
 
-* Database creation
+## Running the tests
 
-* Database initialization
+```shell
+bundle exec rspec
+```
 
-* How to run the test suite
+# The Application
 
-* Services (job queues, cache servers, search engines, etc.)
+The application is a gamestore in which the users could subscribe to a collection of videogames.
+Each videogame belongs only to a collection.
 
-* Deployment instructions
+[You can find the data model explanation here.](https://share.getcloudapp.com/6qu85YRO)
 
-* ...
+## What we'll cover
+
+We need to test the models and controller endpoints to ensure:
+
+- Each videogame belongs to a specific collection.
+- User with subscription have access to their respective collection.
+- Users don't have access to a collection that is not subscribed for.
+- User have access to all the videogames of the collection they are subscribed.

@@ -1,2 +1,2 @@
-json.extract! collection, :id, :title, :videogame_id, :created_at, :updated_at
+json.extract! collection, :id, :title, :created_at, :updated_at
 json.url collection_url(collection, format: :json)

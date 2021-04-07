@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_205322) do
+ActiveRecord::Schema.define(version: 2021_04_07_222651) do
 
   create_table "collections", force: :cascade do |t|
     t.string "title"
-    t.integer "videogame_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -22,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_205322) do
   create_table "subscriptions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "collection_id"
-    t.string "type"
+    t.string "plan"
     t.datetime "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -43,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_205322) do
     t.string "publisher"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "collection_id"
   end
 
 end

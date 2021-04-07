@@ -9,6 +9,7 @@
       <th>Genre</th>
       <th>Description</th>
       <th>Publisher</th>
+      <th>Collection</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= videogame.genre %></td>
         <td><%= videogame.description %></td>
         <td><%= videogame.publisher %></td>
+        <td><%= videogame.collection %></td>
         <td><%= link_to 'Show', videogame %></td>
         <td><%= link_to 'Edit', edit_videogame_path(videogame) %></td>
         <td><%= link_to 'Destroy', videogame, method: :delete, data: { confirm: 'Are you sure?' } %></td>

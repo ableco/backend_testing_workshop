@@ -3,7 +3,12 @@ class VideogamesController < ApplicationController
 
   # GET /videogames or /videogames.json
   def index
-    @videogames = Videogame.all
+    @user = User.find(params[:user_id])
+    if self.collection.id === @user.collection.id
+      render_pictures @user
+    else
+      render json: [], status: 401
+    end
   end
 
   # GET /videogames/1 or /videogames/1.json
@@ -64,6 +69,6 @@ class VideogamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def videogame_params
-      params.require(:videogame).permit(:title, :genre, :description, :publisher)
+      params.require(:videogame).permit(:title, :genre, :description, :publisher, :collection_id)
     end
 end
