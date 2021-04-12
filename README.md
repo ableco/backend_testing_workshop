@@ -31,7 +31,9 @@ Each videogame belongs only to a collection.
 
 We need to test the models and controller endpoints to ensure:
 
-- Each videogame belongs to a specific collection.
-- User with subscription have access to their respective collection.
-- Users don't have access to a collection that is not subscribed for.
-- User have access to all the videogames of the collection they are subscribed.
+- VideoGameController
+  - Validate 200 status when the user access to the videogames of their collection.
+  - Validate that the user can access to all the videogames of the collection they are subscribed.
+  - Validate 401 status when the user try to access to a collection that is not subscribed.
+  - Validate 401 status when the user try to access with an expired subscription.
+  - Validate that the user can't see a videogame that is not subscribed for

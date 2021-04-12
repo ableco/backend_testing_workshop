@@ -4,8 +4,12 @@ class VideogamesController < ApplicationController
   # GET /videogames or /videogames.json
   def index
     @user = User.find(params[:user_id])
-    if @user.subscriptions.where(collection_id: params[:collection_id]).size > 0
-      render json: Collection.find(params[:collection_id]).videogames
+    if @user.subscriptions.first.expiration_date == nil
+      if @user.subscriptions.where(collection_id: params[:collection_id]).size > 0
+        render json: Collection.find(params[:collection_id]).videogames
+      else
+        render json: [], status: 401
+      end
     else
       render json: [], status: 401
     end
@@ -13,6 +17,16 @@ class VideogamesController < ApplicationController
 
   # GET /videogames/1 or /videogames/1.json
   def show
+    @user = User.find(params[:user_id])
+   if @user.subscriptions.first.expiration_date == nil
+      if @user.subscriptions.where(collection_id: params[:collection_id]).videogames.find(params[:id])
+        render json: Videogame.find(params[:videogame_id])
+      else
+        render json: [], status: 401
+      end
+   else
+    render json: [], status: 401
+   end
   end
 
   # GET /videogames/new
@@ -69,6 +83,6 @@ class VideogamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def videogame_params
-      params.require(:videogame).permit(:title, :genre, :description, :publisher, :collection_id)
+      params.require(:videogame).permit(:title, :genre, :description, :publisher, :collection_id, :videogame_id)
     end
 end
