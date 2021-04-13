@@ -18,15 +18,12 @@ class VideogamesController < ApplicationController
   # GET /videogames/1 or /videogames/1.json
   def show
     @user = User.find(params[:user_id])
-   if @user.subscriptions.first.expiration_date == nil
-      if @user.subscriptions.where(collection_id: params[:collection_id]).videogames.find(params[:id])
-        render json: Videogame.find(params[:videogame_id])
+      @subscription = @user.subscriptions.where(collection_id: params[:collection_id])
+      if @subscription.size > 0
+        render json: Videogame.find(params[:id])
       else
         render json: [], status: 401
       end
-   else
-    render json: [], status: 401
-   end
   end
 
   # GET /videogames/new
