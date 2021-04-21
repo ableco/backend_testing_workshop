@@ -32,8 +32,8 @@ Each videogame belongs only to one collection.
 We need to writte back-end tests to cover the following:
 
 - VideoGameController
-  - Validate 200 status when the user access to the videogames of their collection.
-  - Validate that the user can access to all the videogames of the collection they are subscribed.
-  - Validate 401 status when the user try to access to a collection that is not subscribed.
-  - Validate 401 status when the user try to access with an expired subscription.
-  - Validate that the user can't see a videogame that is not subscribed for
+  - Validate the 200 status when the user tries to access using the GET Method to the Index to see the video games of their collection..
+  - Validate that the response returns all the videogames of the collection of the  user.
+  - Validate the 401 status when the user tries to access using the GET Method to the Index to a collection that is not subscribed for.
+  - Validate the 401 status when the user tries to access using the GET Method to the Index to a collection that is subscribed, but reached their expiration date.
+  - Validate the 401 status when the user tries to access using the GET Method to the Show, for a videogame that is not in their collection.
