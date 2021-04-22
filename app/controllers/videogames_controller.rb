@@ -12,7 +12,7 @@ class VideogamesController < ApplicationController
     subscription = @user.subscriptions.where(collection_id: params[:collection_id])
     if subscription.first && subscription.first.expiration_date > DateTime.now
       if subscription.size > 0
-        render json: Collection.find(params[:collection_id]).videogames
+        render json: Videogame.find(params[:id])
       else
         render json: [], status: 401
       end
