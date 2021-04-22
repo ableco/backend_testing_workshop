@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CollectionsController, type: :controller do
-    context "follow request" do
+    context "Collections" do
     let(:current_user){create(:user)}
     let(:another_user){create(:user)}
     let(:collection){create(:collection)}
