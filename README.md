@@ -33,11 +33,12 @@ We need to writte back-end tests to cover the following:
 
 - VideoGameController
 
-  - Validate the 200 status when the user tries to access using the GET Method to the Show to see a video game of their collection.
-  - Validate that the response returns the videogame data.
-  - Validate the 401 status when the user tries to access using the GET Method to the Show, for a videogame that is not in their collection.
+  - Validate the 200 status when the user tries to access using the “GET Method” to the “Show view” to see a video game in their collection.
+  - Validate that the response returns the video game data.
+  - Validate the 401 status when the user tries to access using the “GET Method” to the “Show View”, for a videogame that is not in their collection.
 
 - CollectionController
 
-  - Validate the 401 status when the user tries to access using the GET Method to the Show to a collection that is not subscribed for.
-  - Validate the 401 status when the user tries to access using the GET Method to the Show to a collection that is subscribed, but reached their expiration date.
+  - Validate the 401 status when the user tries to access using the “GET Method” to the “Show view” to a collection that they are not subscribed to.
+  - Validate the 401 status when the user tries to access using the “GET Method” to the “Show view” to a collection that they are subscribed to, but reached their expiration date.
+
