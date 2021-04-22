@@ -9,10 +9,11 @@ class VideogamesController < ApplicationController
   # GET /videogames/1 or /videogames/1.json
   def show
     @user = User.find(params[:user_id])
+    @videogame = Videogame.find(params[:id])
     subscription = @user.subscriptions.where(collection_id: params[:collection_id])
     if subscription.first && subscription.first.expiration_date > DateTime.now
-      if subscription.size > 0
-        render json: Videogame.find(params[:id])
+      if subscription.first.collection.id == @videogame.collection_id
+        render json: @videogame
       else
         render json: [], status: 401
       end
