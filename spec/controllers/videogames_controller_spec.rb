@@ -6,7 +6,7 @@ RSpec.describe VideogamesController, type: :controller do
     let(:another_user){create(:user)}
     let(:collection){create(:collection)}
     let(:collection2){create(:collection)}
-    it "200 status" do
+    it "Validate the 200 status when the user tries to access using the “GET Method” to the “Show view” to see a video game in their collection." do
       videogame = create(:videogame, collection_id: collection.id)
       subscription = create(:subscription, collection_id: collection.id, user_id: current_user.id, expiration_date: DateTime.current.to_date + 1.month)
       raw_response = get(:show, params: { id: videogame.id ,user_id: current_user.id, collection_id: collection.id })
@@ -15,7 +15,7 @@ RSpec.describe VideogamesController, type: :controller do
       expect(response.status).to eq(200)
     end
 
-    it "401 status when try to access to a videogame that is not subscribed" do
+    it "Validate the 401 status when the user tries to access using the “GET Method” to the “Show View” for a videogame that is not in their collection." do
       videogame = create(:videogame, collection_id: collection.id)
       subscription = create(:subscription, collection_id: collection.id, user_id: current_user.id, expiration_date: DateTime.current.to_date + 1.month)
       get(:show, params: { id: videogame.id, user_id: current_user.id, collection_id: collection2.id })
