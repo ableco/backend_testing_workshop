@@ -22,7 +22,7 @@ bundle exec rspec
 
 # The Application
 
-The application is a gamestore in which the users could subscribe to a collection of videogames.
+The application is a game store in which the users could subscribe to a collection of videogames.
 Each videogame belongs only to one collection.
 
 [You can find the data model explanation here.](https://share.getcloudapp.com/6qu85YRO)
