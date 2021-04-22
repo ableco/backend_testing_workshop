@@ -8,6 +8,17 @@ class CollectionsController < ApplicationController
 
   # GET /collections/1 or /collections/1.json
   def show
+    @user = User.find(params[:user_id])
+    subscription = @user.subscriptions.where(id: params[:id])
+    if subscription.first && subscription.first.expiration_date > DateTime.now
+      if subscription.size > 0
+        render json: Collection.find(params[:id]).videogames
+      else
+        render json: [], status: 401
+      end
+    else
+      render json: [], status: 401
+    end
   end
 
   # GET /collections/new

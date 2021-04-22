@@ -3,9 +3,14 @@ class VideogamesController < ApplicationController
 
   # GET /videogames or /videogames.json
   def index
+    @videogames = Videogame.all
+  end
+
+  # GET /videogames/1 or /videogames/1.json
+  def show
     @user = User.find(params[:user_id])
     subscription = @user.subscriptions.where(collection_id: params[:collection_id])
-    if subscription.first && subscription.first.expiration_date == nil
+    if subscription.first && subscription.first.expiration_date > DateTime.now
       if subscription.size > 0
         render json: Collection.find(params[:collection_id]).videogames
       else
@@ -14,17 +19,6 @@ class VideogamesController < ApplicationController
     else
       render json: [], status: 401
     end
-  end
-
-  # GET /videogames/1 or /videogames/1.json
-  def show
-    @user = User.find(params[:user_id])
-      @subscription = @user.subscriptions.where(collection_id: params[:collection_id])
-      if @subscription.size > 0
-        render json: Videogame.find(params[:id])
-      else
-        render json: [], status: 401
-      end
   end
 
   # GET /videogames/new
