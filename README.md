@@ -10,6 +10,7 @@
 bundle install
 yarn install
 bin/rails db:setup
+rails webpacker:compile
 ```
 
 Run the project with `bin/rails s` and ensure you can access it at `http://localhost:3000`
